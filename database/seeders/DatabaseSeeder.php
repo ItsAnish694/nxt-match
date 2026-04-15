@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
         $role_id = Role::where(["role" => "manager"])->pluck('id');
 
         User::create([
-            'name' => 'Anish Dhakal',
-            'email' => 'anish@gmail.com',
-            'password' => "password"
+            'name' => env('ADMIN_NAME'),
+            'email' => env('ADMIN_EMAIL'),
+            'password' => env('ADMIN_PASSWORD')
         ])->roles()->attach($role_id);
     }
 }
