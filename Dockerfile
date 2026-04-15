@@ -1,5 +1,5 @@
 # --- Stage 1: Build React Assets ---
-FROM node:20-alpine AS frontend-builder
+FROM node:20 AS frontend-builder
 WORKDIR /app
 
 # Copy only package files for caching
@@ -7,13 +7,12 @@ COPY package*.json ./
 RUN npm install
 
 # Copy only the frontend source
-COPY resources/js ./resources/js
-COPY public ./public
+COPY . .
 
 RUN npm run build
 
 # --- Stage 2: Production PHP Image ---
-FROM php:8.2-fpm-alpine
+FROM php:8.2-fpm
 
 # Install system dependencies
 RUN apk add --no-cache \
