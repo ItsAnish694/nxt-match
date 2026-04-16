@@ -9,7 +9,12 @@ function Navbar() {
 
     return (
         <header className="mb-8 flex flex-col items-center justify-between gap-4 border-b border-white/10 py-6 sm:flex-row">
-            <div className="flex items-center gap-3">
+            <div
+                onClick={() => {
+                    window.location.href = '/';
+                }}
+                className="flex cursor-pointer items-center gap-3"
+            >
                 <div className="group relative flex h-10 w-10 -skew-x-12 transform items-center justify-center overflow-hidden rounded-xl bg-white shadow-[0_0_20px_rgba(255,255,255,0.1)]">
                     <div className="absolute inset-0 translate-y-full bg-black/5 transition-transform duration-300 group-hover:translate-y-0"></div>
                     <svg
