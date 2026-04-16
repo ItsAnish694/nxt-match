@@ -274,7 +274,10 @@ function Dashboard() {
                                     type="text"
                                     value={editForm.data.name}
                                     onChange={(e) =>
-                                        editForm.setData('name', e.target.value)
+                                        editForm.setData(
+                                            'name',
+                                            e.target.value.trim(),
+                                        )
                                     }
                                     className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm transition-colors outline-none focus:border-cyan-500/50"
                                     required
@@ -290,7 +293,7 @@ function Dashboard() {
                                     onChange={(e) =>
                                         editForm.setData(
                                             'email',
-                                            e.target.value,
+                                            e.target.value.trim(),
                                         )
                                     }
                                     className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm transition-colors outline-none focus:border-cyan-500/50"

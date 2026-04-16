@@ -38,9 +38,9 @@ class AdminController extends Controller
     public function add_player(Request $request)
     {
         $validate = $request->validate([
-            'name' => "string|required|max:255|trim",
-            "email" => "email|required|trim|max:255|unique:users,email",
-            "password" => "string|required|min:8|max:255|trim"
+            'name' => "string|required|max:255",
+            "email" => "email|required|max:255|unique:users,email",
+            "password" => "string|required|min:8|max:255"
         ]);
 
         if (!auth()->user()->roles->whereIn('role', ['leader', 'manager'])->isNotEmpty()) {
@@ -69,8 +69,8 @@ class AdminController extends Controller
     public function update_player(Request $request, User $user)
     {
         $validate = $request->validate([
-            'name' => "string|required|max:255|trim",
-            "email" => "email|required|max:255|trim|unique:users,email," . $user->id,
+            'name' => "string|required|max:255",
+            "email" => "email|required|max:255|unique:users,email," . $user->id,
         ]);
 
         if (!auth()->user()->roles->whereIn('role', ['manager'])->isNotEmpty()) {

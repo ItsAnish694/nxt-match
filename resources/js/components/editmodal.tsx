@@ -61,7 +61,9 @@ function EditModal({ setIsModalOpen, gameToEdit }: Props) {
                             type="text"
                             required
                             value={data.title}
-                            onChange={(e) => setData('title', e.target.value)}
+                            onChange={(e) =>
+                                setData('title', e.target.value.trim())
+                            }
                             placeholder="e.g. VCT Finals"
                             className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"
                         />
@@ -76,7 +78,7 @@ function EditModal({ setIsModalOpen, gameToEdit }: Props) {
                             required
                             value={data.description}
                             onChange={(e) =>
-                                setData('description', e.target.value)
+                                setData('description', e.target.value.trim())
                             }
                             rows={2}
                             className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"
@@ -96,7 +98,9 @@ function EditModal({ setIsModalOpen, gameToEdit }: Props) {
                                 onChange={(e) =>
                                     setData(
                                         'date',
-                                        new Date(e.target.value).toDateString(),
+                                        new Date(
+                                            e.target.value.trim(),
+                                        ).toDateString(),
                                     )
                                 }
                                 className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white scheme-dark transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"
@@ -111,7 +115,7 @@ function EditModal({ setIsModalOpen, gameToEdit }: Props) {
                                 value={data.time}
                                 required
                                 onChange={(e) =>
-                                    setData('time', e.target.value)
+                                    setData('time', e.target.value.trim())
                                 }
                                 className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white scheme-dark transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"
                             />
@@ -129,7 +133,10 @@ function EditModal({ setIsModalOpen, gameToEdit }: Props) {
                                 value={data.mapCount}
                                 required
                                 onChange={(e) =>
-                                    setData('mapCount', Number(e.target.value))
+                                    setData(
+                                        'mapCount',
+                                        Number(e.target.value.trim()),
+                                    )
                                 }
                                 placeholder="e.g. 3"
                                 className="h-11.5 w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"
@@ -144,7 +151,7 @@ function EditModal({ setIsModalOpen, gameToEdit }: Props) {
                                 placeholder="Ascent, Bind..."
                                 value={data.maps}
                                 onChange={(e) =>
-                                    setData('maps', e.target.value)
+                                    setData('maps', e.target.value.trim())
                                 }
                                 className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"
                             />
