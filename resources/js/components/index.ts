@@ -5,6 +5,7 @@ import DeleteModal from './deletemodal';
 import EditModal from './editmodal';
 import Modal from './modal';
 import Navbar from './navbar';
+import PlayerDeleteModal from './playerDeleteModal';
 import Taskpanel from './taskpanel';
 import ViewModal from './viewmodal';
 
@@ -14,6 +15,7 @@ export {
     Calendar,
     Taskpanel,
     Modal,
+    PlayerDeleteModal,
     AuthModal,
     EditModal,
     DeleteModal,

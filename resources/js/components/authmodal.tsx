@@ -6,15 +6,16 @@ type Props = {
 };
 
 function AuthModal({ setAuthModalOpen }: Props) {
-    const { data, setData, post, processing } = useForm({
+    const { data, setData, post, processing, errors } = useForm({
         email: '',
         password: '',
     });
 
     const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post('/api/login');
-        setAuthModalOpen(false);
+        post('/api/login', {
+            onSuccess: () => setAuthModalOpen(false),
+        });
     };
 
     return (
@@ -55,8 +56,15 @@ function AuthModal({ setAuthModalOpen }: Props) {
                             value={data.email}
                             onChange={(e) => setData('email', e.target.value)}
                             placeholder="e.g. VCT Finals"
-                            className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"
+                            className={`w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10 ${
+                                errors.email ? 'border-red-500/50' : ''
+                            }`}
                         />
+                        {errors.email && (
+                            <span className="text-xs font-semibold text-red-500">
+                                {errors.email}
+                            </span>
+                        )}
                     </div>
 
                     <div className="flex flex-col gap-1.5">

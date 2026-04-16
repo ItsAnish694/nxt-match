@@ -241,7 +241,7 @@ function Taskpanel({ games, date }: Props) {
                 createPortal(
                     <DeleteModal
                         setIsModalOpen={setIsDeleteModalOpen}
-                        gameToDelete={selectedGame}
+                        deleteId={selectedGame.id}
                     />,
                     document.body,
                 )}

@@ -1,6 +1,8 @@
 import { useForm, usePage, Head } from '@inertiajs/react';
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { AddPlayerModal, Navbar } from '@/components';
+import { PlayerDeleteModal } from '@/components';
 
 interface Role {
     id: number;
@@ -19,6 +21,7 @@ function Dashboard() {
     const { players, auth } = usePage().props;
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
 
     const isManager = auth.user.roles.includes('manager');
@@ -50,10 +53,9 @@ function Dashboard() {
         });
     };
 
-    const handleDelete = (id: number) => {
-        if (confirm('Are you sure you want to delete this player?')) {
-            post(`/api/player/${id}/delete`);
-        }
+    const handleDelete = (player: Player) => {
+        setIsDeleteModalOpen(true);
+        setSelectedPlayer(player);
     };
 
     const handleSetLeader = (id: number) => {
@@ -205,7 +207,7 @@ function Dashboard() {
                                                             <button
                                                                 onClick={() =>
                                                                     handleDelete(
-                                                                        player.id,
+                                                                        player,
                                                                     )
                                                                 }
                                                                 className="rounded-lg bg-white/5 p-2 text-neutral-400 transition-all hover:bg-rose-500/20 hover:text-rose-400"
@@ -320,6 +322,15 @@ function Dashboard() {
                     </div>
                 </div>
             )}
+            {isDeleteModalOpen &&
+                typeof document !== 'undefined' &&
+                createPortal(
+                    <PlayerDeleteModal
+                        setIsModalOpen={setIsDeleteModalOpen}
+                        deleteId={selectedPlayer?.id}
+                    />,
+                    document.body,
+                )}
         </div>
     );
 }

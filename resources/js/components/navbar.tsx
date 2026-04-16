@@ -42,11 +42,20 @@ function Navbar() {
                         </button>
                     </>
                 ) : (
-                    <form action="/api/logout" method="POST">
-                        <button className="flex-1 rounded-lg bg-linear-to-r from-cyan-500 to-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all hover:from-cyan-400 hover:to-blue-500 hover:shadow-[0_0_30px_rgba(34,211,238,0.8)] sm:flex-none">
-                            LOGOUT
-                        </button>
-                    </form>
+                    <>
+                        {auth.user?.roles?.includes('manager') && (
+                            <form action="/player/add" method="GET">
+                                <button className="flex-1 rounded-lg bg-linear-to-r from-cyan-500 to-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all hover:from-cyan-400 hover:to-blue-500 hover:shadow-[0_0_30px_rgba(34,211,238,0.8)] sm:flex-none">
+                                    Manage Players
+                                </button>
+                            </form>
+                        )}
+                        <form action="/api/logout" method="POST">
+                            <button className="flex-1 rounded-lg bg-linear-to-r from-cyan-500 to-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all hover:from-cyan-400 hover:to-blue-500 hover:shadow-[0_0_30px_rgba(34,211,238,0.8)] sm:flex-none">
+                                LOGOUT
+                            </button>
+                        </form>
+                    </>
                 )}
             </div>
 

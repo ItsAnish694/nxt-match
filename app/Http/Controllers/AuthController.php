@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -15,8 +16,8 @@ class AuthController extends Controller
         ]);
 
         if (!\Auth::attempt($validate, true)) {
-            return response()->json([
-                "Error" => "Wrong Credentials"
+            throw ValidationException::withMessages([
+                'email' => ['Wrong credentials.'],
             ]);
         }
 

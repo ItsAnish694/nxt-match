@@ -2,10 +2,10 @@ import React from 'react';
 
 type Props = {
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    deleteId: number;
+    deleteId: number | undefined;
 };
 
-function DeleteModal({ setIsModalOpen, deleteId }: Props) {
+function PlayerDeleteModal({ setIsModalOpen, deleteId }: Props) {
     return (
         <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm sm:p-6">
             <div className="w-full max-w-md rounded-2xl border border-white/10 bg-neutral-900 p-6 shadow-2xl">
@@ -35,7 +35,7 @@ function DeleteModal({ setIsModalOpen, deleteId }: Props) {
                 </div>
 
                 <form
-                    action={`/api/delete/${deleteId}`}
+                    action={`/api/player/${deleteId}/delete`}
                     method="POST"
                     className="flex flex-col gap-4"
                 >
@@ -60,4 +60,4 @@ function DeleteModal({ setIsModalOpen, deleteId }: Props) {
     );
 }
 
-export default DeleteModal;
+export default PlayerDeleteModal;
