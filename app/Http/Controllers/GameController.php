@@ -22,12 +22,12 @@ class GameController extends Controller
     public function add_games(Request $request)
     {
         $values = $request->validate([
-            'title' => "string|required",
-            "description" => "string|required",
-            "date" => "string|required",
-            "time" => "string|required",
+            'title' => "string|required|trim",
+            "description" => "string|required|trim",
+            "date" => "string|required|trim",
+            "time" => "string|required|trim",
             "mapCount" => "integer|required",
-            "maps" => "nullable|string"
+            "maps" => "nullable|string|trim"
         ]);
 
         Game::create($values);

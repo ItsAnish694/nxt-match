@@ -14,10 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->string("description");
-            $table->date("date");
+            $table->string("date");
             $table->time("time");
             $table->string("mapCount");
-            $table->json("maps")->nullable();
+            $table->string("maps")->nullable();
             $table->timestamps();
         });
     }
