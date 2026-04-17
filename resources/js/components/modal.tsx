@@ -74,7 +74,7 @@ function Modal({ setIsModalOpen, date }: Props) {
                             required
                             value={data.title}
                             onChange={(e) =>
-                                setData('title', e.target.value.trim())
+                                setData('title', e.target.value)
                             }
                             placeholder="e.g. VCT Finals"
                             className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"
@@ -90,7 +90,7 @@ function Modal({ setIsModalOpen, date }: Props) {
                             required
                             value={data.description}
                             onChange={(e) =>
-                                setData('description', e.target.value.trim())
+                                setData('description', e.target.value)
                             }
                             rows={2}
                             className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"
@@ -111,7 +111,7 @@ function Modal({ setIsModalOpen, date }: Props) {
                                     setData(
                                         'date',
                                         new Date(
-                                            e.target.value.trim(),
+                                            e.target.value,
                                         ).toDateString(),
                                     )
                                 }
@@ -127,7 +127,7 @@ function Modal({ setIsModalOpen, date }: Props) {
                                 value={data.time}
                                 required
                                 onChange={(e) =>
-                                    setData('time', e.target.value.trim())
+                                    setData('time', e.target.value)
                                 }
                                 className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white scheme-dark transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"
                             />
@@ -147,7 +147,7 @@ function Modal({ setIsModalOpen, date }: Props) {
                                 onChange={(e) =>
                                     setData(
                                         'mapCount',
-                                        Number(e.target.value.trim()),
+                                        Number(e.target.value),
                                     )
                                 }
                                 placeholder="e.g. 3"
@@ -163,7 +163,7 @@ function Modal({ setIsModalOpen, date }: Props) {
                                 placeholder="Ascent, Bind..."
                                 value={data.maps}
                                 onChange={(e) =>
-                                    setData('maps', e.target.value.trim())
+                                    setData('maps', e.target.value)
                                 }
                                 className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"
                             />

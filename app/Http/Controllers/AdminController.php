@@ -56,7 +56,13 @@ class AdminController extends Controller
             return back()->with('error', 'Maximum number of players reached.');
         }
 
-        $user = User::create($validate);
+        $user = User::create(
+            [
+                'name' => trim($validate["name"]),
+                'email' => trim($validate['email']),
+                'password' => trim($validate['password'])
+            ]
+        );
         $player_role = Role::where('role', 'player')->first();
         $user->roles()->attach($player_role->id);
 
@@ -77,7 +83,10 @@ class AdminController extends Controller
             abort(403);
         }
 
-        $user->update($validate);
+        $user->update([
+            'name' => trim($validate['name']),
+            'email' => trim($validate['email'])
+        ]);
 
         return redirect()->route('dashboard');
     }

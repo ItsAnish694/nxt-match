@@ -40,7 +40,7 @@ function AddPlayerModal({ setIsAddModalOpen }: Props) {
                             type="text"
                             value={data.name}
                             onChange={(e) =>
-                                setData('name', e.target.value.trim())
+                                setData('name', e.target.value)
                             }
                             className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm transition-colors outline-none focus:border-cyan-500/50"
                             placeholder="Enter player name"
@@ -55,7 +55,7 @@ function AddPlayerModal({ setIsAddModalOpen }: Props) {
                             type="email"
                             value={data.email}
                             onChange={(e) =>
-                                setData('email', e.target.value.trim())
+                                setData('email', e.target.value)
                             }
                             className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm transition-colors outline-none focus:border-cyan-500/50"
                             placeholder="player@example.com"
@@ -70,7 +70,7 @@ function AddPlayerModal({ setIsAddModalOpen }: Props) {
                             type="password"
                             value={data.password}
                             onChange={(e) =>
-                                setData('password', e.target.value.trim())
+                                setData('password', e.target.value)
                             }
                             className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm transition-colors outline-none focus:border-cyan-500/50"
                             placeholder="••••••••"

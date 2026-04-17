@@ -55,7 +55,7 @@ function AuthModal({ setAuthModalOpen }: Props) {
                             type="text"
                             value={data.email}
                             onChange={(e) =>
-                                setData('email', e.target.value.trim())
+                                setData('email', e.target.value)
                             }
                             placeholder="e.g. VCT Finals"
                             className={`w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10 ${
@@ -77,7 +77,7 @@ function AuthModal({ setAuthModalOpen }: Props) {
                             type="text"
                             value={data.password}
                             onChange={(e) =>
-                                setData('password', e.target.value.trim())
+                                setData('password', e.target.value)
                             }
                             placeholder="e.g. VCT Finals"
                             className="w-full rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white transition-colors outline-none focus:border-cyan-500/50 focus:bg-white/10"

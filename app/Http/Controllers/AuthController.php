@@ -10,10 +10,15 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $validate = $request->validate([
+        $request->validate([
             "email" => "required|email|max:255",
             "password" => "string|required"
         ]);
+
+        $validate = [
+            'email' => trim($request->input("email")),
+            'password' => trim($request->input('password'))
+        ];
 
         if (!\Auth::attempt($validate, true)) {
             throw ValidationException::withMessages([
